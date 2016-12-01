@@ -1,0 +1,254 @@
+\hypertarget{class_action}{}\section{Action Class Reference}
+\label{class_action}\index{Action@{Action}}
+
+
+A \hyperlink{class_g_o_a_p}{G\+O\+A\+P} action can have a set of requirements and a cost, it then has an effect when completed so that the planner can use it to satisfy a \hyperlink{class_goal}{Goal}  
+
+
+Inheritance diagram for Action\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_action}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_action_aed886910937b93b956b61cff7be572bc}{Action} ()
+\begin{DoxyCompactList}\small\item\em default constructor, initialises preconditions and effects \end{DoxyCompactList}\item 
+void \hyperlink{class_action_a21740ddc42a7c47572caede717005763}{Do\+Reset} ()
+\begin{DoxyCompactList}\small\item\em resets the action to its default state \end{DoxyCompactList}\item 
+\hypertarget{class_action_ac1fbcc1054f462ea4e46aecec983e8ec}{}abstract void {\bfseries Reset} ()\label{class_action_ac1fbcc1054f462ea4e46aecec983e8ec}
+
+\item 
+\hypertarget{class_action_ada6d09848fa150cc89745fff1bc8b2d5}{}abstract bool {\bfseries Is\+Done} ()\label{class_action_ada6d09848fa150cc89745fff1bc8b2d5}
+
+\item 
+\hypertarget{class_action_a43360ddabf1415318e453fcaf9805c8d}{}abstract bool {\bfseries Check\+Procedural\+Precondition} (Game\+Object agent)\label{class_action_a43360ddabf1415318e453fcaf9805c8d}
+
+\item 
+\hypertarget{class_action_af779fa1eb5494513e7afe3450362f23e}{}abstract bool {\bfseries Perform} (Game\+Object agent)\label{class_action_af779fa1eb5494513e7afe3450362f23e}
+
+\item 
+\hypertarget{class_action_ac2df69ba49c45fc4fbd9f76e7c3beb56}{}abstract bool {\bfseries Requires\+In\+Range} ()\label{class_action_ac2df69ba49c45fc4fbd9f76e7c3beb56}
+
+\item 
+byte \hyperlink{class_action_ac1cd1bb574e98e9e299e786727395b93}{Get\+Cost} ()
+\begin{DoxyCompactList}\small\item\em gets the cost of the action \end{DoxyCompactList}\item 
+void \hyperlink{class_action_ad95984cfd81dd0debd89b2eb62f66d5f}{Set\+Cost} (byte cost)
+\begin{DoxyCompactList}\small\item\em sets the cost for the action \end{DoxyCompactList}\item 
+void \hyperlink{class_action_a60832e6094bf58d56b86db14c0c86244}{Set\+In\+Range} ()
+\begin{DoxyCompactList}\small\item\em sets the action to be in range \end{DoxyCompactList}\item 
+bool \hyperlink{class_action_a2f1a8b4050f57bf34f6691c4403898bc}{Get\+In\+Range} ()
+\begin{DoxyCompactList}\small\item\em gets wether the action is in range or not \end{DoxyCompactList}\item 
+void \hyperlink{class_action_aca3de1e11c18edc715a3322bc01c1e91}{Set\+Target} (Game\+Object target)
+\begin{DoxyCompactList}\small\item\em sets a target for the action \end{DoxyCompactList}\item 
+Game\+Object \hyperlink{class_action_a1c21dae76e175d5921d012a56e34c8b7}{Get\+Target} ()
+\begin{DoxyCompactList}\small\item\em gets the action's target \end{DoxyCompactList}\item 
+void \hyperlink{class_action_acf226c4a5fac20e472678232b1677b44}{Add\+Precondition} (string str, object obj)
+\begin{DoxyCompactList}\small\item\em adds a new precondition to the Hash\+Set \end{DoxyCompactList}\item 
+void \hyperlink{class_action_aae731975d3759bbbd4a03ff12804fda5}{Remove\+Precondition} (string key)
+\begin{DoxyCompactList}\small\item\em removes a precondition from the Hash\+Set \end{DoxyCompactList}\item 
+\hypertarget{class_action_aa2843e05295e1cd9f321c4f32f70646e}{}Hash\+Set$<$ Key\+Value\+Pair$<$ string, object $>$ $>$ {\bfseries Get\+Preconditions} ()\label{class_action_aa2843e05295e1cd9f321c4f32f70646e}
+
+\item 
+void \hyperlink{class_action_aff6e57b63affca019682039119895ef9}{Add\+Effect} (string str, object obj)
+\begin{DoxyCompactList}\small\item\em similarly to preconditions, it adds a new effect in the Hash\+Set \end{DoxyCompactList}\item 
+void \hyperlink{class_action_ac00e1048ff1eb9315a28e6dc6cecaccd}{Remove\+Effect} (string key)
+\begin{DoxyCompactList}\small\item\em removes an effect from the Hash\+Set \end{DoxyCompactList}\item 
+\hypertarget{class_action_a5ac53d1cc348f1e131bd8ffa649cc217}{}Hash\+Set$<$ Key\+Value\+Pair$<$ string, object $>$ $>$ {\bfseries Get\+Effects} ()\label{class_action_a5ac53d1cc348f1e131bd8ffa649cc217}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A \hyperlink{class_g_o_a_p}{G\+O\+A\+P} action can have a set of requirements and a cost, it then has an effect when completed so that the planner can use it to satisfy a \hyperlink{class_goal}{Goal} 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_action_aed886910937b93b956b61cff7be572bc}{}\index{Action@{Action}!Action@{Action}}
+\index{Action@{Action}!Action@{Action}}
+\subsubsection[{Action}]{\setlength{\rightskip}{0pt plus 5cm}Action.\+Action (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_action_aed886910937b93b956b61cff7be572bc}
+
+
+default constructor, initialises preconditions and effects 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_action_aff6e57b63affca019682039119895ef9}{}\index{Action@{Action}!Add\+Effect@{Add\+Effect}}
+\index{Add\+Effect@{Add\+Effect}!Action@{Action}}
+\subsubsection[{Add\+Effect}]{\setlength{\rightskip}{0pt plus 5cm}void Action.\+Add\+Effect (
+\begin{DoxyParamCaption}
+\item[{string}]{str, }
+\item[{object}]{obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_action_aff6e57b63affca019682039119895ef9}
+
+
+similarly to preconditions, it adds a new effect in the Hash\+Set 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & name of the effect\\
+\hline
+{\em obj} & value of the effect, usually a bool\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_action_acf226c4a5fac20e472678232b1677b44}{}\index{Action@{Action}!Add\+Precondition@{Add\+Precondition}}
+\index{Add\+Precondition@{Add\+Precondition}!Action@{Action}}
+\subsubsection[{Add\+Precondition}]{\setlength{\rightskip}{0pt plus 5cm}void Action.\+Add\+Precondition (
+\begin{DoxyParamCaption}
+\item[{string}]{str, }
+\item[{object}]{obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_action_acf226c4a5fac20e472678232b1677b44}
+
+
+adds a new precondition to the Hash\+Set 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & the name of the precondition\\
+\hline
+{\em obj} & the value of the precondition, usually a bool\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_action_a21740ddc42a7c47572caede717005763}{}\index{Action@{Action}!Do\+Reset@{Do\+Reset}}
+\index{Do\+Reset@{Do\+Reset}!Action@{Action}}
+\subsubsection[{Do\+Reset}]{\setlength{\rightskip}{0pt plus 5cm}void Action.\+Do\+Reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_action_a21740ddc42a7c47572caede717005763}
+
+
+resets the action to its default state 
+
+\hypertarget{class_action_ac1cd1bb574e98e9e299e786727395b93}{}\index{Action@{Action}!Get\+Cost@{Get\+Cost}}
+\index{Get\+Cost@{Get\+Cost}!Action@{Action}}
+\subsubsection[{Get\+Cost}]{\setlength{\rightskip}{0pt plus 5cm}byte Action.\+Get\+Cost (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_action_ac1cd1bb574e98e9e299e786727395b93}
+
+
+gets the cost of the action 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_action_a2f1a8b4050f57bf34f6691c4403898bc}{}\index{Action@{Action}!Get\+In\+Range@{Get\+In\+Range}}
+\index{Get\+In\+Range@{Get\+In\+Range}!Action@{Action}}
+\subsubsection[{Get\+In\+Range}]{\setlength{\rightskip}{0pt plus 5cm}bool Action.\+Get\+In\+Range (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_action_a2f1a8b4050f57bf34f6691c4403898bc}
+
+
+gets wether the action is in range or not 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_action_a1c21dae76e175d5921d012a56e34c8b7}{}\index{Action@{Action}!Get\+Target@{Get\+Target}}
+\index{Get\+Target@{Get\+Target}!Action@{Action}}
+\subsubsection[{Get\+Target}]{\setlength{\rightskip}{0pt plus 5cm}Game\+Object Action.\+Get\+Target (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_action_a1c21dae76e175d5921d012a56e34c8b7}
+
+
+gets the action's target 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_action_ac00e1048ff1eb9315a28e6dc6cecaccd}{}\index{Action@{Action}!Remove\+Effect@{Remove\+Effect}}
+\index{Remove\+Effect@{Remove\+Effect}!Action@{Action}}
+\subsubsection[{Remove\+Effect}]{\setlength{\rightskip}{0pt plus 5cm}void Action.\+Remove\+Effect (
+\begin{DoxyParamCaption}
+\item[{string}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_action_ac00e1048ff1eb9315a28e6dc6cecaccd}
+
+
+removes an effect from the Hash\+Set 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & name of the effect to be removed\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_action_aae731975d3759bbbd4a03ff12804fda5}{}\index{Action@{Action}!Remove\+Precondition@{Remove\+Precondition}}
+\index{Remove\+Precondition@{Remove\+Precondition}!Action@{Action}}
+\subsubsection[{Remove\+Precondition}]{\setlength{\rightskip}{0pt plus 5cm}void Action.\+Remove\+Precondition (
+\begin{DoxyParamCaption}
+\item[{string}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_action_aae731975d3759bbbd4a03ff12804fda5}
+
+
+removes a precondition from the Hash\+Set 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & the name of the precondition to be removed\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_action_ad95984cfd81dd0debd89b2eb62f66d5f}{}\index{Action@{Action}!Set\+Cost@{Set\+Cost}}
+\index{Set\+Cost@{Set\+Cost}!Action@{Action}}
+\subsubsection[{Set\+Cost}]{\setlength{\rightskip}{0pt plus 5cm}void Action.\+Set\+Cost (
+\begin{DoxyParamCaption}
+\item[{byte}]{cost}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_action_ad95984cfd81dd0debd89b2eb62f66d5f}
+
+
+sets the cost for the action 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cost} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_action_a60832e6094bf58d56b86db14c0c86244}{}\index{Action@{Action}!Set\+In\+Range@{Set\+In\+Range}}
+\index{Set\+In\+Range@{Set\+In\+Range}!Action@{Action}}
+\subsubsection[{Set\+In\+Range}]{\setlength{\rightskip}{0pt plus 5cm}void Action.\+Set\+In\+Range (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_action_a60832e6094bf58d56b86db14c0c86244}
+
+
+sets the action to be in range 
+
+\hypertarget{class_action_aca3de1e11c18edc715a3322bc01c1e91}{}\index{Action@{Action}!Set\+Target@{Set\+Target}}
+\index{Set\+Target@{Set\+Target}!Action@{Action}}
+\subsubsection[{Set\+Target}]{\setlength{\rightskip}{0pt plus 5cm}void Action.\+Set\+Target (
+\begin{DoxyParamCaption}
+\item[{Game\+Object}]{target}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_action_aca3de1e11c18edc715a3322bc01c1e91}
+
+
+sets a target for the action 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Code/\+G\+O\+A\+P/Action.\+cs\end{DoxyCompactItemize}

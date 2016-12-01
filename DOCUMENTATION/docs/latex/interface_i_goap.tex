@@ -1,0 +1,146 @@
+\hypertarget{interface_i_goap}{}\section{I\+Goap Interface Reference}
+\label{interface_i_goap}\index{I\+Goap@{I\+Goap}}
+
+
+Any agent that wants to use \hyperlink{class_g_o_a_p}{G\+O\+A\+P} must implement this interface. It provides information to the \hyperlink{class_g_o_a_p}{G\+O\+A\+P} planner so it can plan what actions to use. It also provides an interface for the planner to give feedback to the Agent and report success/failure.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Hash\+Set$<$ Key\+Value\+Pair$<$ string, object $>$ $>$ \hyperlink{interface_i_goap_afd9fa3eae6e1ee461505b33893637666}{get\+World\+State} ()
+\begin{DoxyCompactList}\small\item\em gets a reference to the state of the World \end{DoxyCompactList}\item 
+Hash\+Set$<$ Key\+Value\+Pair$<$ string, object $>$ $>$ \hyperlink{interface_i_goap_a33aed8ae113775001f4b2cc1729e5f7a}{create\+Goal\+State} ()
+\begin{DoxyCompactList}\small\item\em Provides a new \hyperlink{class_goal}{Goal} to the Planner \end{DoxyCompactList}\item 
+void \hyperlink{interface_i_goap_a2654ec9b902683ce5f5fe31434889ea0}{plan\+Failed} (Hash\+Set$<$ Key\+Value\+Pair$<$ string, object $>$$>$ failed\+Goal)
+\begin{DoxyCompactList}\small\item\em If a plan failed to be created, a new one will be tried excluding the failed goal from the creation process \end{DoxyCompactList}\item 
+void \hyperlink{interface_i_goap_a5aa7548d02bfd0f8f0143c15b4282cd0}{plan\+Found} (Hash\+Set$<$ Key\+Value\+Pair$<$ string, object $>$$>$ goal, Queue$<$ \hyperlink{class_action}{Action} $>$ actions)
+\begin{DoxyCompactList}\small\item\em If a plan was found, a queue of Actions is provided for the requested \hyperlink{class_goal}{Goal} \end{DoxyCompactList}\item 
+void \hyperlink{interface_i_goap_a62899286cd2362e0d870c688a98ccdd6}{actions\+Finished} ()
+\begin{DoxyCompactList}\small\item\em decides what happens once all the actions are completed \end{DoxyCompactList}\item 
+void \hyperlink{interface_i_goap_aee6419a123508fe7a8696ae9fde698f8}{plan\+Aborted} (\hyperlink{class_action}{Action} aborter)
+\begin{DoxyCompactList}\small\item\em If one of the actions made the plan be aborted, this function gets called \end{DoxyCompactList}\item 
+bool \hyperlink{interface_i_goap_a32aadeff3002e72b2e575cb21f527ec0}{move\+Agent} (\hyperlink{class_action}{Action} next\+Action)
+\begin{DoxyCompactList}\small\item\em this method gets called during update and takes care of moving the Agent to his next destination \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Any agent that wants to use \hyperlink{class_g_o_a_p}{G\+O\+A\+P} must implement this interface. It provides information to the \hyperlink{class_g_o_a_p}{G\+O\+A\+P} planner so it can plan what actions to use. It also provides an interface for the planner to give feedback to the Agent and report success/failure. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_i_goap_a62899286cd2362e0d870c688a98ccdd6}{}\index{I\+Goap@{I\+Goap}!actions\+Finished@{actions\+Finished}}
+\index{actions\+Finished@{actions\+Finished}!I\+Goap@{I\+Goap}}
+\subsubsection[{actions\+Finished}]{\setlength{\rightskip}{0pt plus 5cm}void I\+Goap.\+actions\+Finished (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{interface_i_goap_a62899286cd2362e0d870c688a98ccdd6}
+
+
+decides what happens once all the actions are completed 
+
+\hypertarget{interface_i_goap_a33aed8ae113775001f4b2cc1729e5f7a}{}\index{I\+Goap@{I\+Goap}!create\+Goal\+State@{create\+Goal\+State}}
+\index{create\+Goal\+State@{create\+Goal\+State}!I\+Goap@{I\+Goap}}
+\subsubsection[{create\+Goal\+State}]{\setlength{\rightskip}{0pt plus 5cm}Hash\+Set$<$Key\+Value\+Pair$<$string, object$>$ $>$ I\+Goap.\+create\+Goal\+State (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{interface_i_goap_a33aed8ae113775001f4b2cc1729e5f7a}
+
+
+Provides a new \hyperlink{class_goal}{Goal} to the Planner 
+
+\begin{DoxyReturn}{Returns}
+the new \hyperlink{class_goal}{Goal} created
+\end{DoxyReturn}
+\hypertarget{interface_i_goap_afd9fa3eae6e1ee461505b33893637666}{}\index{I\+Goap@{I\+Goap}!get\+World\+State@{get\+World\+State}}
+\index{get\+World\+State@{get\+World\+State}!I\+Goap@{I\+Goap}}
+\subsubsection[{get\+World\+State}]{\setlength{\rightskip}{0pt plus 5cm}Hash\+Set$<$Key\+Value\+Pair$<$string, object$>$ $>$ I\+Goap.\+get\+World\+State (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{interface_i_goap_afd9fa3eae6e1ee461505b33893637666}
+
+
+gets a reference to the state of the World 
+
+\begin{DoxyReturn}{Returns}
+a Hash Set containing the state of the World
+\end{DoxyReturn}
+\hypertarget{interface_i_goap_a32aadeff3002e72b2e575cb21f527ec0}{}\index{I\+Goap@{I\+Goap}!move\+Agent@{move\+Agent}}
+\index{move\+Agent@{move\+Agent}!I\+Goap@{I\+Goap}}
+\subsubsection[{move\+Agent}]{\setlength{\rightskip}{0pt plus 5cm}bool I\+Goap.\+move\+Agent (
+\begin{DoxyParamCaption}
+\item[{{\bf Action}}]{next\+Action}
+\end{DoxyParamCaption}
+)}\label{interface_i_goap_a32aadeff3002e72b2e575cb21f527ec0}
+
+
+this method gets called during update and takes care of moving the Agent to his next destination 
+
+
+\begin{DoxyParams}{Parameters}
+{\em next\+Action} & the \hyperlink{class_action}{Action} to perform when the destination is reached\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if destination has been reached
+\end{DoxyReturn}
+\hypertarget{interface_i_goap_aee6419a123508fe7a8696ae9fde698f8}{}\index{I\+Goap@{I\+Goap}!plan\+Aborted@{plan\+Aborted}}
+\index{plan\+Aborted@{plan\+Aborted}!I\+Goap@{I\+Goap}}
+\subsubsection[{plan\+Aborted}]{\setlength{\rightskip}{0pt plus 5cm}void I\+Goap.\+plan\+Aborted (
+\begin{DoxyParamCaption}
+\item[{{\bf Action}}]{aborter}
+\end{DoxyParamCaption}
+)}\label{interface_i_goap_aee6419a123508fe7a8696ae9fde698f8}
+
+
+If one of the actions made the plan be aborted, this function gets called 
+
+
+\begin{DoxyParams}{Parameters}
+{\em aborter} & the \hyperlink{class_action}{Action} that caused the plan to get aborted\\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_i_goap_a2654ec9b902683ce5f5fe31434889ea0}{}\index{I\+Goap@{I\+Goap}!plan\+Failed@{plan\+Failed}}
+\index{plan\+Failed@{plan\+Failed}!I\+Goap@{I\+Goap}}
+\subsubsection[{plan\+Failed}]{\setlength{\rightskip}{0pt plus 5cm}void I\+Goap.\+plan\+Failed (
+\begin{DoxyParamCaption}
+\item[{Hash\+Set$<$ Key\+Value\+Pair$<$ string, object $>$$>$}]{failed\+Goal}
+\end{DoxyParamCaption}
+)}\label{interface_i_goap_a2654ec9b902683ce5f5fe31434889ea0}
+
+
+If a plan failed to be created, a new one will be tried excluding the failed goal from the creation process 
+
+
+\begin{DoxyParams}{Parameters}
+{\em failed\+Goal} & the goal we failed to achieve\\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_i_goap_a5aa7548d02bfd0f8f0143c15b4282cd0}{}\index{I\+Goap@{I\+Goap}!plan\+Found@{plan\+Found}}
+\index{plan\+Found@{plan\+Found}!I\+Goap@{I\+Goap}}
+\subsubsection[{plan\+Found}]{\setlength{\rightskip}{0pt plus 5cm}void I\+Goap.\+plan\+Found (
+\begin{DoxyParamCaption}
+\item[{Hash\+Set$<$ Key\+Value\+Pair$<$ string, object $>$$>$}]{goal, }
+\item[{Queue$<$ {\bf Action} $>$}]{actions}
+\end{DoxyParamCaption}
+)}\label{interface_i_goap_a5aa7548d02bfd0f8f0143c15b4282cd0}
+
+
+If a plan was found, a queue of Actions is provided for the requested \hyperlink{class_goal}{Goal} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em goal} & the requested \hyperlink{class_goal}{Goal}\\
+\hline
+{\em actions} & the queue of Actions to be executed to achieve the \hyperlink{class_goal}{Goal}\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Code/\+G\+O\+A\+P/I\+Goap.\+cs\end{DoxyCompactItemize}
