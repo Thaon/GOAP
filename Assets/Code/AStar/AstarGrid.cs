@@ -13,6 +13,7 @@ public class AstarGrid : MonoBehaviour {
     public Vector2 m_size;
     public float m_nodeRadius;
     public LayerMask m_unwalkableMask;
+    public LayerMask m_walkableMask;
     public Transform m_player;
     public Transform endNode;
     public bool m_debugDraw;
@@ -46,6 +47,7 @@ public class AstarGrid : MonoBehaviour {
                 Vector3 cell = bottomLeft + Vector3.right * (x * m_nodeRadius * 2 + m_nodeRadius) + Vector3.forward * (y * m_nodeRadius * 2 + m_nodeRadius);
                 //check if can walk
                 bool walk = (Physics.CheckSphere(cell, m_nodeRadius, m_unwalkableMask)) ? false : true;
+                walk = Physics.CheckSphere(cell, m_nodeRadius, m_walkableMask) ? walk : false;
                 m_grid[x, y] = new AstarNode(cell, walk, new Vector2(x,y));
             }
         }
