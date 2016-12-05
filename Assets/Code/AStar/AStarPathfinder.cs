@@ -72,7 +72,7 @@ public class AStarPathfinder : MonoBehaviour {
                 }
             }
         }
-        print("no findino pathino...");
+        print("no path found...");
         return null;
     }
 

@@ -91,6 +91,9 @@ public class EatAction : Action {
 
     public override bool Perform(GameObject agent)
     {
+        GetComponent<Animator>().SetBool("interacting", true);
+        m_isEating = true;
+
         if (m_startingTime == 0)
             m_startingTime = Time.time;
 
@@ -104,7 +107,7 @@ public class EatAction : Action {
                 GetTarget().GetComponent<VendingMachine>().SetFood(food - 1);
                 m_hunger -= 20;
             }
-            m_isEating = true;
+            GetComponent<Animator>().SetBool("interacting", false);
         }
         else
         {

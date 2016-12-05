@@ -103,6 +103,8 @@ public class AstarGrid : MonoBehaviour {
             if (m_grid != null)
             {
                 AstarNode playerNode = GetNodeFromPosition(m_player.transform.position);
+                if (playerNode == null)
+                    print("no player");
                 foreach (AstarNode n in m_grid)
                 {
                     Gizmos.color = n.m_walkable ? Color.white : Color.red;

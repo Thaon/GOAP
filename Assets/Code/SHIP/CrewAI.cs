@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(AstarAgent))]
 [RequireComponent(typeof(Animator))]
-public class CrewAI : MonoBehaviour, IGoap {
+public abstract class CrewAI : MonoBehaviour, IGoap {
 
     #region member variables
 
     private List<string> m_inventory;
     private AstarAgent m_nav;
     private Animator m_anim;
+    private Text m_indicator;
 
     #endregion
 
@@ -17,11 +19,14 @@ public class CrewAI : MonoBehaviour, IGoap {
     {
         m_nav = GetComponent<AstarAgent>();
         m_anim = GetComponent<Animator>();
+        m_inventory = new List<string>();
+        m_indicator = GetComponentInChildren<Text>();
     }
 	
 	void Update ()
     {
         m_anim.SetFloat("speed", m_nav.velocity);
+
         //increase hunger over time
         if (GetComponent<EatAction>() != null)
         {
@@ -47,18 +52,34 @@ public class CrewAI : MonoBehaviour, IGoap {
             worldState.Add(new KeyValuePair<string, object>("tired", GetComponent<RestAction>().IsSleepy()));
         }
 
-            return worldState;
+        //food
+        worldState.Add(new KeyValuePair<string, object>("hasIngredients", m_inventory.Contains("ingredients")));
+
+        //check if we need to refill any pilons
+        bool needToRefill = true;
+        VendingMachine[] vendingMachines = FindObjectsOfType<VendingMachine>();
+
+        foreach (VendingMachine machine in vendingMachines)
+        {
+            //we need to get only machines that DON'T have food
+            if (machine.GetFood() == 0)
+            {
+                needToRefill = false;
+                break;
+            }
+        }
+        worldState.Add(new KeyValuePair<string, object>("makeFood", needToRefill)); //to be changed
+        //worldState.Add(new KeyValuePair<string, object>("hasMadeFood", ));
+
+
+        //materials
+        //worldState.Add(new KeyValuePair<string, object>("hasMaterials", m_inventory.Contains("materials")));
+
+
+        return worldState;
     }
 
-    public HashSet<KeyValuePair<string, object>> createGoalState()
-    {
-        HashSet<KeyValuePair<string, object>> goal = new HashSet<KeyValuePair<string, object>>();
-
-        goal.Add(new KeyValuePair<string, object>("hungry", false));
-        goal.Add(new KeyValuePair<string, object>("tired", false));
-
-        return goal;
-    }
+    public abstract HashSet<KeyValuePair<string, object>> createGoalState();
 
     public void planFailed(HashSet<KeyValuePair<string, object>> failedGoal)
     {
@@ -68,6 +89,9 @@ public class CrewAI : MonoBehaviour, IGoap {
     {
         // write to the log the queue of actions found
         Debug.Log("<color=green>Plan found</color> " + GoapAgent.prettyPrint(actions));
+
+        //set the text on the action display done here for static actions purposes
+        m_indicator.text = actions.Peek().GetType().ToString();
     }
 
     public void actionsFinished()
@@ -83,8 +107,13 @@ public class CrewAI : MonoBehaviour, IGoap {
 
     public bool moveAgent(Action nextAction)
     {
+        //set the text on the action display done here for demonstration purposes
+        m_indicator.text = nextAction.GetType().ToString();
+
         // move towards the NextAction's target
-        if (Vector3.Distance(transform.position, nextAction.GetTarget().transform.position) <= 1)
+        Vector3 fullDis = transform.position - nextAction.GetTarget().transform.position;
+        fullDis.y = 0;
+        if (fullDis.magnitude <= 1)
         {
             // we are at the target location, we are done
             nextAction.SetInRange();
@@ -97,5 +126,15 @@ public class CrewAI : MonoBehaviour, IGoap {
             m_nav.Resume();
             return false;
         }
+    }
+
+    public void AddToInventory(string item)
+    {
+        m_inventory.Add(item);
+    }
+
+    public void RemoveFromInventory(string item)
+    {
+        m_inventory.Remove(item);
     }
 }
